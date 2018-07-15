@@ -24,11 +24,14 @@ public class ImageItem implements Serializable {
     /** 图片的路径和创建时间相同就认为是同一张图片 */
     @Override
     public boolean equals(Object o) {
-        if (o instanceof ImageItem) {
-            ImageItem item = (ImageItem) o;
-            return this.path.equalsIgnoreCase(item.path) && this.addTime == item.addTime;
+        try {
+            if (o instanceof ImageItem) {
+                ImageItem item = (ImageItem) o;
+                return this.path.equalsIgnoreCase(item.path) && this.addTime == item.addTime;
+            }
+        } catch (ClassCastException e) {
+            e.printStackTrace();
         }
-
         return super.equals(o);
     }
 }
